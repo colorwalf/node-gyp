@@ -1,5 +1,9 @@
-FROM node:alpine
+FROM node:17-alpine3.14
 
-MAINTAINER jeff <jeff@cct95.com>
+RUN mkdir -p /usr/src/app
 
-RUN apk add --no-cache --virtual .gyp-deps python make gcc g++
+WORKDIR /usr/src/app
+
+COPY entrypoint.sh /
+
+ENTRYPOINT ["/entrypoint.sh"]
